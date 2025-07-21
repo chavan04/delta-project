@@ -85,7 +85,7 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello from Delta Project!");
+  res.render("home");
 });
 
 
