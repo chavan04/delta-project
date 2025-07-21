@@ -84,6 +84,11 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+app.get("/", (req, res) => {
+  res.send("Hello from Delta Project!");
+});
+
+
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
 });
@@ -94,6 +99,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(8088, () => {
-  console.log("Server is listening on port 8088");
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
